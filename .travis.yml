@@ -1,0 +1,29 @@
+dist: xenial
+language: python
+matrix:
+  include:
+  - python: '2.7'
+    env: TOXENV=py27
+  - python: '3.6'
+    env: TOXENV=py36
+  - python: '3.7'
+    env: TOXENV=py37
+  - python: 3.8-dev
+    env: TOXENV=py38
+  allow_failures:
+  - python: 3.8-dev
+  fast_finish: true
+install:
+- pip install tox
+script:
+- tox -v
+deploy:
+  provider: pypi
+  user: TimofeyKukushkin
+  password:
+    secure: Os2CT+M+NAE8jB+GcjOp0rBmaZ8ZX4A0ZlKgEQ6ik/HjaqfXeNaJm8Blb1/MPGpmtBNhNrMClMQCIntqyu2IoSIhrdgBxU/PyOAo/0hIF7Vx9oXN11zSYEPleeu5akSfYCESKDs2p4ZbNybkpaVPgmnAxnhyba9smQ6aeYKgT8Xs+I17EJ+JJ/Yfa+X/t095eMHDANnFX0H+gkyzJCTfDQbA2PVEvBYWeVbaxbRW+CJxxWURLE1xpBV0lIDYDLPW0QB1qSTd1E/Q1YyURjBMjv4AhENOX0o9TuIY1o7rELGu/6q5oAHWHspY0f4p6F+LRfORu1qzFEJM/p2waVMFlu19B9Yn6x3HYUWtQsGo4AtCzyShNc6tytpT64Gu1HMKXCiAUWQ91603mbU5wGLmnRofhtBLdO38K3cIVE2trenWLlMg9FfvIMwStW/Fg5MOTx4tU/HD38gtv7T1/yUlcMboRAc5FSVqnBvdMZ9ZNbCevf1t16i3BiDO6ZgDCm2pvQFN68l6b2lNBNVvJ2XrjgYWyeuKQW2nImB+a5dMcN4NavHsUO8elNpzm6sBuFCvScA6mZNGfhh2YE4mMP7YaJdYi3DcAKRyhKrPgu5BYTfOYIXFo1+qsowy6Tk4EzP63hyp9gPuYx406Bjfs8eqfqLdJ3euHVZsNVUoS3j+KOo=
+  on:
+    tags: true
+    python: '2.7'
+  distributions: sdist bdist_wheel
+  skip_existing: true

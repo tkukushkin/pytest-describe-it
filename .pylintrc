@@ -1,0 +1,15 @@
+[MESSAGES CONTROL]
+disable =
+  missing-docstring,
+  useless-object-inheritance,
+  protected-access
+
+[REPORTS]
+output-format = text
+reports = no
+
+[BASIC]
+single-line-if-stmt = no
+
+[MISCELLANEOUS]
+notes = FIXME,XXX,TODO
