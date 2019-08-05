@@ -24,7 +24,7 @@ def pytest_itemcollected(item):
     if not test_description:
         return
     nodes = [
-        *filter(None, map(_get_describe_text, _iter_ancestors(item))),
+        *filter(None, map(_get_describe_text, reversed(list(_iter_ancestors(item))))),
         test_description,
     ]
     item.name = f'{item.function.__name__}[[ {" — ".join(nodes)} ]]'
